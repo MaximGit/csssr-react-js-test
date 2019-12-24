@@ -8,8 +8,8 @@ Slomux — упрощённая, сломанная реализация Flux. �
 
 ## Решение
 
-Initial commit from Create React App
-npm i prop-types
+- Initial commit from Create React App
+- npm i prop-types
 #cssr-react-js-test
 - добавил исходный код задания
 - пофиксил: "unterminated statement"
