@@ -30,7 +30,7 @@ const connect = (mapStateToProps, mapDispatchToProps) =>
                     />
                 )
             }
-            componentDidUpdate() {
+            componentDidMount() {
                 this.context.store.subscribe(this.handleChange)
             }
             handleChange = () => {
