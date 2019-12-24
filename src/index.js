@@ -60,6 +60,8 @@ Provider.childContextTypes = {
 const START_TIMER = 'START_TIMER';
 const STOP_TIMER = 'STOP_TIMER';
 const CHANGE_INTERVAL = 'CHANGE_INTERVAL';
+const startTimer = () => ({type: START_TIMER});
+const stopTimer = () => ({type: STOP_TIMER});
 // action creators
 const changeInterval = value => ({
     type: CHANGE_INTERVAL,
