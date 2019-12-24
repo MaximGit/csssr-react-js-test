@@ -99,6 +99,7 @@ const Interval = connect(dispatch => ({
     }))(IntervalComponent);
 class TimerComponent extends React.Component {
     state = {
+        intervalId: null,
         currentTime: 0
     };
     render() {
@@ -116,12 +117,20 @@ class TimerComponent extends React.Component {
         )
     }
     handleStart = () => {
-        setTimeout(() => this.setState({
-            currentTime: this.state.currentTime + this.props.currentInterval,
-        }), this.props.currentInterval)
+        const intervalId = setInterval(
+            () =>
+                this.setState({
+                    currentTime: this.state.currentTime + this.props.currentInterval,
+                }),
+            this.props.currentInterval * 1000,
+        );
+        this.setState({intervalId});
+        this.props.startTimer();
     };
     handleStop = () => {
-        this.setState({currentTime: 0})
+        clearInterval(this.state.intervalId);
+        this.setState({intervalId: null, currentTime: 0});
+        this.props.stopTimer();
     }
 }
 const Timer = connect(state => ({
