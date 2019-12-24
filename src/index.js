@@ -112,12 +112,12 @@ class TimerComponent extends React.Component {
             </div>
         )
     }
-    handleStart() {
+    handleStart = () => {
         setTimeout(() => this.setState({
             currentTime: this.state.currentTime + this.props.currentInterval,
         }), this.props.currentInterval)
-    }
-    handleStop() {
+    };
+    handleStop = () => {
         this.setState({currentTime: 0})
     }
 }
