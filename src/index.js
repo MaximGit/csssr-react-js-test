@@ -140,10 +140,18 @@ class TimerComponent extends React.Component {
         this.props.stopTimer();
     }
 }
-const Timer = connect(state => ({
-    currentInterval: state,
-}), () => {
-})(TimerComponent);
+const Timer = connect(
+    state => ({
+        timerOn: state.timerOn,
+        currentInterval: state.currentInterval,
+    }),
+    dispatch => {
+        return {
+            startTimer: () => dispatch(startTimer()),
+            stopTimer: () => dispatch(stopTimer()),
+        };
+    },
+)(TimerComponent);
 // init
 ReactDOM.render(
     <Provider store={createStore(reducer)}>
