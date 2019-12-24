@@ -13,10 +13,10 @@ const createStore = (reducer, initialState) => {
     const getState = () => currentState;
     const dispatch = action => {
         currentState = reducer(currentState, action);
-        listeners.forEach(listener => listener())
+        listeners.forEach(listener => listener());
     };
     const subscribe = listener => listeners.push(listener);
-    return {getState, dispatch, subscribe}
+    return {getState, dispatch, subscribe};
 };
 const connect = (mapStateToProps, mapDispatchToProps) =>
     Component => {
@@ -154,7 +154,7 @@ const Timer = connect(
 )(TimerComponent);
 // init
 ReactDOM.render(
-    <Provider store={createStore(reducer)}>
+    <Provider store={createStore(reducer, {timerOn: false, currentInterval: 1})}>
         <Timer/>
     </Provider>,
     document.getElementById('app')
