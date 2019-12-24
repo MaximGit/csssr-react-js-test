@@ -34,7 +34,7 @@ const connect = (mapStateToProps, mapDispatchToProps) =>
                 this.context.store.subscribe(this.handleChange)
             }
             handleChange = () => {
-                this.forceUpdate()
+                this.forceUpdate();
             }
         }
         WrappedComponent.contextTypes = {
@@ -145,7 +145,7 @@ class TimerComponent extends React.Component {
                     </button>
                 </div>
             </div>
-        )
+        );
     }
     handleStart = () => {
         const intervalId = setInterval(
@@ -162,7 +162,7 @@ class TimerComponent extends React.Component {
         clearInterval(this.state.intervalId);
         this.setState({intervalId: null, currentTime: 0});
         this.props.stopTimer();
-    }
+    };
 }
 const Timer = connect(
     state => ({
