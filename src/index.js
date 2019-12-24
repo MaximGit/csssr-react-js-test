@@ -71,9 +71,9 @@ const changeInterval = value => ({
 const reducer = (state, action) => {
     switch (action.type) {
         case START_TIMER:
-            return {...state, timerIsStarted: true};
+            return {...state, timerOn: true};
         case STOP_TIMER:
-            return {...state, timerIsStarted: false};
+            return {...state, timerOn: false};
         case CHANGE_INTERVAL:
             return {
                 ...state,
@@ -90,8 +90,20 @@ class IntervalComponent extends React.Component {
             <div>
                 <span>Интервал обновления секундомера: {this.props.currentInterval} сек.</span>
                 <span>
-          <button onClick={() => this.props.changeInterval(-1)}>-</button>
-          <button onClick={() => this.props.changeInterval(1)}>+</button>
+          <button
+              onClick={() => this.props.changeInterval(-1)}
+              disabled={
+                  this.props.timerOn || !(this.props.currentInterval > 1)
+              }
+          >
+            -
+          </button>
+          <button
+              onClick={() => this.props.changeInterval(1)}
+              disabled={this.props.timerOn}
+          >
+            +
+          </button>
         </span>
             </div>
         )
@@ -119,8 +131,18 @@ class TimerComponent extends React.Component {
                     Секундомер: {this.state.currentTime} сек.
                 </div>
                 <div>
-                    <button onClick={this.handleStart}>Старт</button>
-                    <button onClick={this.handleStop}>Стоп</button>
+                    <button
+                        onClick={this.handleStart}
+                        disabled={this.props.timerOn}
+                    >
+                        Старт
+                    </button>
+                    <button
+                        onClick={this.handleStop}
+                        disabled={!this.props.timerOn}
+                    >
+                        Стоп
+                    </button>
                 </div>
             </div>
         )
