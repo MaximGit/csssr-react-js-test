@@ -57,7 +57,9 @@ Provider.childContextTypes = {
 };
 // APP
 // actions
-const CHANGE_INTERVAL = 'CHANGE_INTERVAL'
+const START_TIMER = 'START_TIMER';
+const STOP_TIMER = 'STOP_TIMER';
+const CHANGE_INTERVAL = 'CHANGE_INTERVAL';
 // action creators
 const changeInterval = value => ({
     type: CHANGE_INTERVAL,
@@ -67,7 +69,7 @@ const changeInterval = value => ({
 const reducer = (state, action) => {
     switch (action.type) {
         case CHANGE_INTERVAL:
-            return state += action.payload
+            return state += action.payload;
         default:
             return {}
     }
